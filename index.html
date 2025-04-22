@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahil Das - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto', 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            transition: background 0.3s, color 0.3s;
+            line-height: 1.6;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            padding: 30px;
+            background: #111;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            margin: 30px auto;
+            gap: 30px;
+        }
+        .left-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        .right-content {
+            flex-basis: 200px;
+            flex-grow: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 25px;
+        }
+
+        /* --- Profile Picture Instagram Effect --- */
+        .profile-pic-wrapper {
+            position: relative;
+            width: 162px;
+            height: 162px;
+            border-radius: 50%;
+            padding: 3px;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            box-shadow: 0 0 20px rgba(220, 39, 67, 0.3);
+        }
+        .profile-pic-wrapper:hover {
+             transform: scale(1.05);
+        }
+
+        .profile-pic {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            border: 4px solid #111;
+            object-fit: cover;
+            display: block;
+        }
+        /* --- End Profile Picture Effect --- */
+
+        .section {
+            margin-bottom: 20px;
+            border: 2px solid #32CD32;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #222;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        /* --- Section Image Size Increased --- */
+        .section img {
+            width: 70px; /* Increased from 50px */
+            height: 70px; /* Increased from 50px */
+            flex-shrink: 0; /* Prevent image from shrinking */
+        }
+        /* --- End Section Image Size Increase --- */
+        .section:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(50, 205, 50, 0.65);
+        }
+        h1, h2 {
+            background: linear-gradient(135deg, #32CD32, #FFD700);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            text-align: left;
+            margin-top: 0;
+        }
+        h1 {
+             margin-bottom: 5px;
+             font-size: 2.5rem;
+        }
+        h2 {
+             margin-bottom: 15px;
+             font-size: 1.5rem;
+        }
+        /* Subtitle Style - Consolidated */
+        .left-content > p:first-of-type {
+            margin-top: 0;
+            margin-bottom: 30px;
+            color: #ccc;
+            font-family: 'Poppins', sans-serif;
+            font-style: normal;
+            font-size: 1.05rem;
+            font-weight: 300;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin: 0;
+            list-style: disc;
+        }
+        li {
+             margin-bottom: 10px;
+             color: #ddd;
+        }
+
+        /* === Social Link Styling === */
+        .social-link-container {
+             margin-top: 30px;
+             display: flex;
+             flex-wrap: wrap;
+             gap: 15px;
+        }
+        .social-link-wrapper {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border: 1px solid #444;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #ccc;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.2s ease;
+        }
+         .social-link-wrapper:hover {
+             background-color: #333;
+             border-color: #666;
+             color: #fff;
+             transform: translateY(-2px);
+         }
+         .social-link-wrapper i {
+             transition: transform 0.3s;
+             font-size: 1.1em;
+         }
+        .social-link-wrapper:hover i {
+            transform: scale(1.1);
+        }
+        .social-icon { /* Base icon style */ }
+        .linkedin { color: #0A66C2; }
+        .twitter { color: #1DA1F2; }
+        .instagram { color: #E4405F; }
+        .facebook { color: #1877F2; }
+
+        .social-link-wrapper:hover .linkedin,
+        .social-link-wrapper:hover .twitter,
+        .social-link-wrapper:hover .instagram,
+        .social-link-wrapper:hover .facebook {
+            color: inherit;
+        }
+        /* === End Social Link Styling === */
+
+        .section div {
+            flex-grow: 1;
+        }
+        .contact p {
+             margin-left: 0;
+             margin-bottom: 10px;
+             color: #ddd;
+        }
+
+        /* === CTA Button Styling (Improved) === */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #5f04f0, #df0529);
+            color: #ffffff;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-position 0.5s ease;
+            background-size: 250% auto;
+            background-position: 0% 50%;
+            box-shadow: 0 5px 15px rgba(203, 2, 239, 0.35);
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover, .cta-button:focus { /* Focus state remains combined with hover */
+            background-position: 100% 50%;
+            transform: scale(1.05);
+            box-shadow: 0 8px 22px rgba(223, 5, 41, 0.45);
+            outline: none;
+        }
+        /* === End CTA Button Styling === */
+
+        /* --- Modal Styles --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.75);
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal.show {
+             display: block;
+             opacity: 1;
+             visibility: visible;
+        }
+        .modal-content {
+            background-color: #282828;
+            color: #f1f1f1;
+            margin: 10% auto;
+            padding: 35px;
+            border: 1px solid #555;
+            width: 85%;
+            max-width: 550px;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 5px 30px rgba(255, 255, 255, 0.1);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+         .modal.show .modal-content {
+              transform: scale(1);
+         }
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 30px;
+            font-weight: bold;
+            line-height: 1;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: #fff;
+            text-decoration: none;
+        }
+        /* --- End Modal Styles --- */
+
+        /* Footer Styling */
+        footer {
+             text-align: center;
+             padding: 25px 0;
+             margin-top: 40px;
+             background-color: #111;
+             border-top: 1px solid #333;
+             font-family: 'Poppins', sans-serif;
+             font-size: 0.9rem;
+             color: #aaa;
+        }
+        footer p {
+             margin: 5px 0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 20px;
+            }
+            .right-content {
+                flex-basis: auto;
+                order: -1;
+                margin-bottom: 30px;
+                padding-bottom: 20px;
+                border-bottom: 1px solid #444;
+            }
+            .profile-pic-wrapper {
+                 width: 132px;
+                 height: 132px;
+            }
+            .profile-pic {
+                 width: 120px;
+                 height: 120px;
+            }
+             h1 {
+                 text-align: center;
+                 font-size: 2rem;
+             }
+             .left-content > p:first-of-type {
+                 text-align: center;
+             }
+             .section {
+                  flex-direction: column;
+                  align-items: flex-start;
+                  padding: 15px;
+             }
+             .section img { /* Size remains 70px, but centered */
+                  align-self: center;
+                  margin-top: 15px;
+             }
+             .social-link-container {
+                 justify-content: center;
+             }
+             .modal-content {
+                 width: 90%;
+                 margin: 20% auto;
+             }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="left-content">
+            <h1>Sahil Das</h1>
+            <p>Aspiring Product Manager | Content Strategist | Business Enthusiast</p>
+
+            <div class="section">
+                <div>
+                    <h2>Academics</h2>
+                    <ul>
+                        <li>Google Startup School (top 1%)</li>
+                        <li>BSc Microbiology(Siliguri College): with 8.57 CGPA</li>
+                        <li>Kendriya Vidyalaya BSF Gandhinagar: 12th with 81% (PCB)</li>
+                    </ul>
+                </div>
+                <img src="photo/3D_model_of_a_Greek_god_studying-removebg-preview.png" alt="Academics Icon">
+            </div>
+
+            <div class="section">
+                <div>
+                    <h2>Certifications</h2>
+                    <ul>
+                        <li>CodeBasics.io - Complete Data Analytics Bootcamp</li>
+                        <li>Post Graduate Certificate in New Product Development (70.5%) - IIM Bangalore</li>
+                        <li>Post Graduate Certificate in Forex Market (73.3%)- IIM Bangalore</li>
+                        <li>Advanced Product Management Cohort (Insurjo) - The Product Folks</li>
+                        <li>Product Management Fundamentals - Young Urban Project</li>
+                        <li>Product Designing Workshop - Growth School (Batch 51)</li>
+                        <li>Metvy Business and Entrepreneurship Program - Metvy Learn</li>
+                    </ul>
+                </div>
+                <img src="photo/Certification_section-removebg-preview.png" alt="Certifications Icon">
+            </div>
+
+            <div class="section">
+                <div>
+                    <h2>Experience</h2>
+                    <ul>
+                        <li>Cohort Member and product Management Intern at The Product Folks</li>
+                        <li>Co-Founder and Product lead at The Gesture Nexus</li>
+                        <li>Management Intern at The Metvy Learn</li>
+                        <li>Fundraising Intern at The Muskaan Foundation</li>
+                    </ul>
+                </div>
+                <img src="photo/Experience-removebg-preview.png" alt="Experience Icon">
+            </div>
+
+            <div class="section contact">
+                <div>
+                    <h2>Contact Information</h2>
+                    <p>• Phone: 7908452811 / 8371990099</p>
+                    <p>• Email: sahildas776@gmail.com</p>
+                </div>
+                <img src="photo/Contact_info-removebg-preview.png" alt="Contact Icon">
+            </div>
+
+             <div class="social-link-container">
+                 <a href="https://www.linkedin.com/in/sahil-das-gupta/" target="_blank" rel="noopener noreferrer" aria-label="Sahil Das Gupta on LinkedIn" class="social-link-wrapper">
+                     <i class="fab fa-linkedin social-icon linkedin"></i> LinkedIn
+                 </a>
+                 <a href="https://x.com/sahildas776" target="_blank" rel="noopener noreferrer" aria-label="Sahil Das Gupta on Twitter/X" class="social-link-wrapper">
+                     <i class="fab fa-twitter social-icon twitter"></i> Twitter
+                 </a>
+                  <a href="https://www.instagram.com/sahilluison/?igsh=a3Z2YXBiNDJybHd3" target="_blank" rel="noopener noreferrer" aria-label="Sahil Das Gupta on Instagram" class="social-link-wrapper">
+                      <i class="fab fa-instagram social-icon instagram"></i> Instagram
+                  </a>
+                  <a href="https://www.facebook.com/SahilDasGupta101" target="_blank" rel="noopener noreferrer" aria-label="Sahil Das Gupta on Facebook" class="social-link-wrapper">
+                      <i class="fab fa-facebook social-icon facebook"></i> Facebook
+                  </a>
+              </div>
+              </div> <div class="right-content">
+            <div class="profile-pic-wrapper" id="profilePicWrapper">
+                 <img src="photo/1729833344729.jpeg" class="profile-pic" alt="Sahil Das Profile Picture">
+            </div>
+            <a href="https://drive.google.com/file/d/1m-mN3zJtsQRKSM_W4ADKLytq52iLzb_p/view?usp=drive_link" class="cta-button" target="_blank" rel="noopener noreferrer">My Resume</a>
+        </div> </div> <footer>
+        <p>Thank you for visiting 💖</p>
+        <p>&copy; 2025 Sahil Das. All rights reserved.</p>
+    </footer>
+
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeModalButton" title="Close">&times;</span>
+            <p>Building exceptional products, to me, is about understanding how people interact with the world around them – and that includes technology. Actively working towards becoming a good Product Leader and a problem solver, I'm seeking opportunities to contribute to a team where I can learn from experienced professionals, champion user needs, and help build impactful products that solve real problems.</p>
+        </div>
+    </div>
+
+    <script>
+        // --- Modal Functionality ---
+        const modal = document.getElementById("profileModal");
+        const profilePicWrapper = document.getElementById("profilePicWrapper");
+        const closeModalButton = document.getElementById("closeModalButton");
+
+        function openModal() {
+          if (modal) {
+            modal.classList.add('show');
+          }
+        }
+
+        function closeModal() {
+          if (modal) {
+            modal.classList.remove('show');
+          }
+        }
+
+        if (profilePicWrapper) {
+            profilePicWrapper.addEventListener('click', openModal);
+        }
+        if (closeModalButton) {
+            closeModalButton.addEventListener('click', closeModal);
+        }
+
+        window.addEventListener('click', function(event) {
+          if (modal && event.target == modal) {
+            closeModal();
+          }
+        });
+
+        window.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && modal && modal.classList.contains('show')) {
+                closeModal();
+            }
+        });
+        // --- End Modal Functionality ---
+
+    </script>
+
+</body>
+</html>
